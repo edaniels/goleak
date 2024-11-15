@@ -1,3 +1,4 @@
+// Original License
 // Copyright (c) 2017 Uber Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,9 +25,9 @@ import (
 	"testing"
 	"time"
 
+	"github.com/edaniels/goleak/internal/stack"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"go.uber.org/goleak/internal/stack"
 )
 
 func TestOptionsFilters(t *testing.T) {
@@ -61,19 +62,19 @@ func TestOptionsFilters(t *testing.T) {
 	require.Equal(t, 1, countUnfiltered(), "Expected blockedG goroutine to not match any filter")
 
 	// If we add an extra filter to ignore blockTill, it shouldn't match.
-	opts = buildOpts(IgnoreTopFunction("go.uber.org/goleak.(*blockedG).block"))
+	opts = buildOpts(IgnoreTopFunction("github.com/edaniels/goleak.(*blockedG).block"))
 	require.Zero(t, countUnfiltered(), "blockedG should be filtered out. running: %v", stack.All())
 
 	// If we ignore startBlockedG, that should not ignore the blockedG goroutine
 	// because startBlockedG should be the "created by" function in the stack.
-	opts = buildOpts(IgnoreAnyFunction("go.uber.org/goleak.startBlockedG"))
+	opts = buildOpts(IgnoreAnyFunction("github.com/edaniels/goleak.startBlockedG"))
 	require.Equal(t, 1, countUnfiltered(),
 		"startBlockedG should not be filtered out. running: %v", stack.All())
 }
 
 func TestOptionsIgnoreAnyFunction(t *testing.T) {
 	cur := stack.Current()
-	opts := buildOpts(IgnoreAnyFunction("go.uber.org/goleak.(*blockedG).run"))
+	opts := buildOpts(IgnoreAnyFunction("github.com/edaniels/goleak.(*blockedG).run"))
 
 	for _, s := range stack.All() {
 		if s.ID() == cur.ID() {

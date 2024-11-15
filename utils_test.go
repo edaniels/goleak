@@ -1,3 +1,4 @@
+// Original License
 // Copyright (c) 2017 Uber Technologies, Inc.
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -25,7 +26,7 @@ import (
 	"strings"
 	"testing"
 
-	"go.uber.org/goleak/internal/stack"
+	"github.com/edaniels/goleak/internal/stack"
 )
 
 type blockedG struct {

@@ -1,4 +1,4 @@
-module go.uber.org/goleak
+module github.com/edaniels/goleak
 
 go 1.20
 

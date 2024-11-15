@@ -1,12 +1,14 @@
 # goleak [![GoDoc][doc-img]][doc] [![Build Status][ci-img]][ci] [![Coverage Status][cov-img]][cov]
 
+TEMPORARY FORK UNTIL https://github.com/uber-go/goleak/pull/131 is merged upstream.
+
 Goroutine leak detector to help avoid Goroutine leaks.
 
 ## Installation
 
 You can use `go get` to get the latest version:
 
-`go get -u go.uber.org/goleak`
+`go get -u github.com/edaniels/goleak`
 
 `goleak` also supports semver releases.
 
@@ -65,8 +67,8 @@ goleak is v1 and follows [SemVer](http://semver.org/) strictly.
 
 No breaking changes will be made to exported APIs before 2.0.
 
-[doc-img]: https://pkg.go.dev/badge/go.uber.org/goleak.svg
-[doc]: https://pkg.go.dev/go.uber.org/goleak
+[doc-img]: https://pkg.go.dev/badge/github.com/edaniels/goleak.svg
+[doc]: https://pkg.go.dev/github.com/edaniels/goleak
 [ci-img]: https://github.com/uber-go/goleak/actions/workflows/ci.yml/badge.svg
 [ci]: https://github.com/uber-go/goleak/actions/workflows/ci.yml
 [cov-img]: https://codecov.io/gh/uber-go/goleak/branch/master/graph/badge.svg

@@ -1,3 +1,4 @@
+// Original License
 // Copyright (c) 2017-2023 Uber Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,7 +25,7 @@ import (
 	"strings"
 	"time"
 
-	"go.uber.org/goleak/internal/stack"
+	"github.com/edaniels/goleak/internal/stack"
 )
 
 // Option lets users specify custom verifications.
@@ -62,7 +63,7 @@ func (f optionFunc) apply(opts *opts) { f(opts) }
 
 // IgnoreTopFunction ignores any goroutines where the specified function
 // is at the top of the stack. The function name should be fully qualified,
-// e.g., go.uber.org/goleak.IgnoreTopFunction
+// e.g., github.com/edaniels/goleak.IgnoreTopFunction
 func IgnoreTopFunction(f string) Option {
 	return addFilter(func(s stack.Stack) bool {
 		return s.FirstFunction() == f
@@ -74,11 +75,11 @@ func IgnoreTopFunction(f string) Option {
 //
 // The function name must be fully qualified, e.g.,
 //
-//	go.uber.org/goleak.IgnoreAnyFunction
+//	github.com/edaniels/goleak.IgnoreAnyFunction
 //
 // For methods, the fully qualified form looks like:
 //
-//	go.uber.org/goleak.(*MyType).MyMethod
+//	github.com/edaniels/goleak.(*MyType).MyMethod
 func IgnoreAnyFunction(f string) Option {
 	return addFilter(func(s stack.Stack) bool {
 		return s.HasFunction(f)

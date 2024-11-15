@@ -1,3 +1,4 @@
+// Original License
 // Copyright (c) 2017-2023 Uber Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -75,7 +76,7 @@ func TestAll(t *testing.T) {
 	assert.Contains(t, got[0].allFunctions, "testing.(*T).Run")
 
 	assert.Contains(t, got[1].Full(), "TestAll")
-	assert.Contains(t, got[1].allFunctions, "go.uber.org/goleak/internal/stack.TestAll")
+	assert.Contains(t, got[1].allFunctions, "github.com/edaniels/goleak/internal/stack.TestAll")
 
 	for i := 0; i < 5; i++ {
 		assert.Contains(t, got[2+i].Full(), "stack.waitForDone")
@@ -83,12 +84,12 @@ func TestAll(t *testing.T) {
 }
 
 func TestCurrent(t *testing.T) {
-	const pkgPrefix = "go.uber.org/goleak/internal/stack"
+	const pkgPrefix = "github.com/edaniels/goleak/internal/stack"
 
 	got := Current()
 	assert.NotZero(t, got.ID(), "Should get non-zero goroutine id")
 	assert.Equal(t, "running", got.State())
-	assert.Equal(t, "go.uber.org/goleak/internal/stack.getStackBuffer", got.FirstFunction())
+	assert.Equal(t, "github.com/edaniels/goleak/internal/stack.getStackBuffer", got.FirstFunction())
 
 	wantFrames := []string{
 		"getStackBuffer",
@@ -138,12 +139,12 @@ func TestCurrentCreatedBy(t *testing.T) {
 
 	// The test function created the goroutine
 	// so it won't be part of the stack.
-	assert.False(t, stack.HasFunction("go.uber.org/goleak/internal/stack.TestCurrentCreatedBy"),
+	assert.False(t, stack.HasFunction("github.com/edaniels/goleak/internal/stack.TestCurrentCreatedBy"),
 		"TestCurrentCreatedBy should not be in stack:\n%s", stack.Full())
 
 	// However, the nested function should be.
 	assert.True(t,
-		stack.HasFunction("go.uber.org/goleak/internal/stack.TestCurrentCreatedBy.func1"),
+		stack.HasFunction("github.com/edaniels/goleak/internal/stack.TestCurrentCreatedBy.func1"),
 		"TestCurrentCreatedBy.func1 is not in stack:\n%s", stack.Full())
 }
 

@@ -1,3 +1,4 @@
+// Original License
 // Copyright (c) 2018 Uber Technologies, Inc.
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -19,4 +20,4 @@
 // THE SOFTWARE.
 
 // Package goleak is a Goroutine leak detector.
-package goleak // import "go.uber.org/goleak"
+package goleak // import "github.com/edaniels/goleak"

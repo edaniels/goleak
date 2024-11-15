@@ -1,3 +1,4 @@
+// Original License
 // Copyright (c) 2017 Uber Technologies, Inc.
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,8 +27,8 @@ import (
 	"os/signal"
 	"testing"
 
+	"github.com/edaniels/goleak"
 	"github.com/stretchr/testify/require"
-	"go.uber.org/goleak"
 )
 
 func TestNoLeaks(t *testing.T) {

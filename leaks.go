@@ -1,3 +1,4 @@
+// Original License
 // Copyright (c) 2017 Uber Technologies, Inc.
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,7 +25,7 @@ import (
 	"errors"
 	"fmt"
 
-	"go.uber.org/goleak/internal/stack"
+	"github.com/edaniels/goleak/internal/stack"
 )
 
 // TestingT is the minimal subset of testing.TB that we use.

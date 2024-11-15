@@ -1,3 +1,4 @@
+// Original License
 // Copyright (c) 2017 Uber Technologies, Inc.
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -49,7 +50,7 @@ func TestFind(t *testing.T) {
 		err := Find(testOptions())
 		require.Error(t, err, "Should find leaks with leaked goroutine")
 		assert.ErrorContains(t, err, "blockedG")
-		assert.ErrorContains(t, err, "created by go.uber.org/goleak.startBlockedG")
+		assert.ErrorContains(t, err, "created by github.com/edaniels/goleak.startBlockedG")
 
 		// Once we unblock the goroutine, we shouldn't have leaks.
 		bg.unblock()
